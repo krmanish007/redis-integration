@@ -10,3 +10,5 @@ target/
 .mvn/
 mvnw
 mvnw.cmd
+
+/redis-data
