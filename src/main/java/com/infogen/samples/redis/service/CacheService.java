@@ -10,13 +10,13 @@ import java.util.UUID;
 public class CacheService {
 
     @Cacheable("redis")
-    public String getValue(String id) {
+    public String get(String id) {
         //UUID will only return if setValue is not called for that id
         return UUID.randomUUID().toString();
     }
 
     @CachePut(value = "redis", key="#id")
-    public String setValue(String id, String value) {
+    public String put(String id, String value) {
         return value;
     }
 }

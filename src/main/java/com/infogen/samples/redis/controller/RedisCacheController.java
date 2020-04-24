@@ -1,27 +1,24 @@
 package com.infogen.samples.redis.controller;
 
 import com.infogen.samples.redis.service.CacheService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RedisCacheController {
 
-    CacheService cacheService;
+    private final CacheService cacheService;
 
-    public RedisCacheController(CacheService cacheService) {
+    public RedisCacheController(final CacheService cacheService) {
         this.cacheService = cacheService;
     }
 
-    @GetMapping("set/{id}/{value}")
-    public String setData(@PathVariable String id, @PathVariable String value) {
-        return cacheService.setValue(id, value);
+    @PostMapping("set")
+    public String setData(@RequestParam final String id, @RequestParam final String value) {
+        return cacheService.put(id, value);
     }
 
     @GetMapping("get/{id}")
-    public String getData(@PathVariable String id) {
-        return cacheService.getValue(id);
+    public String getData(@PathVariable final String id) {
+        return cacheService.get(id);
     }
 }
