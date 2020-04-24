@@ -1,4 +1,6 @@
-This creates does the following:
+This is WIP currently:
+
+This spring boot service does the following:
 - Uses docker-compose to start a dockerized official redis instance
 - Start a dockerized version of this service
 - Create an endpoint to insert data in the cache
